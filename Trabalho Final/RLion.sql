@@ -9,7 +9,6 @@ CREATE TABLE caixa (
     Cai_Data DATE
 );
 
--- describe gerente;
 CREATE TABLE proprietario (
 	Pro_ID SERIAL PRIMARY KEY,
     Pro_Nome VARCHAR(45) NOT NULL,
@@ -67,8 +66,6 @@ CREATE TABLE garcom_datas_trabalhos (
 	FOREIGN KEY (GarD_Gar_ID) REFERENCES garcom (Gar_ID),
     PRIMARY KEY (GarD_ID,GarD_Gar_ID,GarD_Data)
 );
-
-DROP TABLE garcom_datas_trabalhos;
 
 CREATE TABLE cozinheiro (
 	Coz_ID SERIAL PRIMARY KEY,
@@ -213,21 +210,20 @@ CREATE TABLE utilizar_estoque(
     FOREIGN KEY (Uti_Est_Coz_ID) REFERENCES cozinheiro(Coz_ID),
 	PRIMARY KEY( Uti_Est_ID, Uti_Est_Est_ID,Uti_Est_Coz_ID)
 );
-DROP TABLE utilizar_estoque;
--- describe cozinheiro;
- 
+
 CREATE TABLE lista_mesas (
 	Mes_ID SERIAL PRIMARY KEY,
     Mes_Status VARCHAR(45)
 );
 
 CREATE TABLE reservas(
-	Res_ID SERIAL PRIMARY KEY,
+	Res_ID SERIAL ,
     Res_Mes_ID BIGINT(20)UNSIGNED,
     Res_Data DATETIME,
     Res_Cli_ID BIGINT(20)UNSIGNED,
     FOREIGN KEY (Res_Mes_ID) REFERENCES lista_mesas(Mes_ID),
-    FOREIGN KEY (Res_Cli_ID) REFERENCES clientes(Cli_ID)
+    FOREIGN KEY (Res_Cli_ID) REFERENCES clientes(Cli_ID),
+    PRIMARY KEY(Res_ID, Res_Mes_ID,Res_Cli_ID)
 );
 
 CREATE TABLE pedidos (
@@ -267,5 +263,54 @@ CREATE TABLE pagamento (
     PRIMARY KEY(Pag_ID,Pag_Ped_ID)
 );
 
+/* Para apagar uma Tabela Deseja*/
+DROP TABLE caixa;
+DROP TABLE proprietario;
+DROP TABLE gerente;
+DROP TABLE gerente_datas_trabalhos;
+DROP TABLE garcom;
+DROP TABLE garcom_datas_trabalhos;
+DROP TABLE cozinheiro;
+DROP TABLE agente_limpeza;
+DROP TABLE agente_limpeza_datas_trabalhos;
+DROP TABLE clientes;
+DROP TABLE supermercados;
+DROP TABLE agente_manu;
+DROP TABLE pratos;
+DROP TABLE bebida_industri;
+DROP TABLE bebida_nat_sol;
+DROP TABLE estoque;
+DROP TABLE utilizar_estoque;
+DROP TABLE lista_mesas;
+DROP TABLE reservas;
+DROP TABLE pedidos;
+DROP TABLE pedidos_itens;
 DROP TABLE pagamento;
+
+/*Exibir a descripção da esquema de uma tabela*/
+
+describe caixa;
+describe proprietario;
+describe gerente;
+describe gerente_datas_trabalhos;
+describe garcom;
+describe garcom_datas_trabalhos;
+describe cozinheiro;
+describe agente_limpeza;
+describe agente_limpeza_datas_trabalhos;
+describe clientes;
+describe supermercados;
+describe agente_manu;
+describe pratos;
+describe bebida_industri;
+describe bebida_nat_sol;
+describe estoque;
+describe utilizar_estoque;
+describe lista_mesas;
+describe reservas;
+describe pedidos;
+describe pedidos_itens;
+describe pagamento;
+
+/*Aoagar o DataBase*/
 DROP DATABASE RLion;

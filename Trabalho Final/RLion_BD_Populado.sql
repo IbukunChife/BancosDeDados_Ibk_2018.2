@@ -12,11 +12,18 @@ values('Veronica Stella','16.718.173/0001-80','Bairro Mecejana, Rua Rozario SP N
 /*
 O restaurante funciona com Dois gerentes um pela das 8h-15h e outro das 16h-22h
 */
-INSERT INTO gerente ( Ger_Nome, Ger_CPF , Ger_End, Ger_Tel, Ger_Salario, Ger_Data_Entr,
-    Ger_Horas_Trab, Ger_Pro_ID, Ger_Cai_ID) 
+INSERT INTO gerente ( Ger_Nome, Ger_CPF , Ger_End, Ger_Tel, Ger_Salario, Ger_Data_Entr, Ger_Pro_ID, Ger_Cai_ID) 
 values
-('Rogerio Sousa','263.188.586-44','Bairro Uniaa Rua centenario Nº885','99863 5401',1250.69,'2018-03-14',7,1,1),
-('Marcia Santos','263.469.775-61','Bairro Aeroporto Rua Asa Branca Nº55','98845 3695',1250.69,'2016-08-06',7,1,1);
+('Rogerio Sousa','263.188.586-44','Bairro Uniaa Rua centenario Nº885','99863 5401',1250.69,'2018-03-14',1,1),
+('Marcia Santos','263.469.775-61','Bairro Aeroporto Rua Asa Branca Nº55','98845 3695',1250.69,'2016-08-06',1,1);
+
+/*
+
+*/
+INSERT INTO gerente_datas_trabalhos (GerD_Ger_ID,GerD_Data, GerD_Hora_Entr)
+values
+(1,current_date(),current_time()),
+(2,current_date(),current_time());
 
 /*
 Pois o restaurante funciona em dois turnos é prevista aqui um efectivo de 10 garçons 
@@ -36,23 +43,21 @@ INSERT INTO garcom ( Gar_Nome, Gar_CPF , Gar_End, Gar_Tel, Gar_Salario, Gar_Data
 
 INSERT INTO garcom_datas_trabalhos (GarD_Gar_ID,GarD_Data, GarD_Hora_Entr)
 values
-(11,current_date(),current_time()),
-(12,current_date(),current_time()),
-(13,current_date(),current_time()),
-(14,current_date(),current_time()),
-(15,current_date(),current_time()),
-(16,current_date(),current_time()),
-(17,current_date(),current_time()),
-(18,current_date(),current_time()),
-(19,current_date(),current_time()),
-(20,current_date(),current_time());
+(1,current_date(),current_time()),
+(2,current_date(),current_time()),
+(3,current_date(),current_time()),
+(4,current_date(),current_time()),
+(5,current_date(),current_time()),
+(6,current_date(),current_time()),
+(7,current_date(),current_time()),
+(8,current_date(),current_time()),
+(9,current_date(),current_time()),
+(10,current_date(),current_time());
 
 UPDATE garcom_datas_trabalhos
 SET GarD_Hora_Said = current_time()
-WHERE GarD_Gar_ID = 13;
- 
--- describe garcom;
--- select * from garcom_datas_trabalhos;  
+WHERE GarD_Gar_ID = 3;
+  
 
 /*
 Na cozinha esta prévista um efetivo de 4 cozinheiro, seja 2 por Turno.
@@ -66,7 +71,7 @@ INSERT INTO cozinheiro ( Coz_Nome, Coz_CPF , Coz_End, Coz_Tel, Coz_Salario, Coz_
 
 
 /*
-
+	POPULANDO A TABELA HORAS DE TRABALHOS DOS COZINHEIROS
 */
 
 INSERT INTO cozinheiro_datas_trabalhos (CozD_Coz_ID,CozD_Data, CozD_Hora_Entr)
@@ -87,7 +92,7 @@ values
 ('Lucia Amaral','619.776.551-90','Bairro Pricuma Nº9498','99444 4746',950.69,'2015-05-07',1);
 
 /*
-
+	POPULANDO A TABELA HORAS DE TRABALHOS DOS AGENTES DE LIMPEZA
 */
 INSERT INTO agente_limpeza_datas_trabalhos (AgLD_AgL_ID,AgLD_Data, AgLD_Hora_Entr)
 values
@@ -100,15 +105,11 @@ Populando os cliente
 INSERT INTO clientes ( Cli_Nome, Cli_CPF, Cli_Tel, Cli_Cat, Cli_Data_Enc,
  Cli_Pro_ID, Cli_Gar_ID, Cli_Ger_ID)
 values
-('Bianca','827.158.515-02','99568-48948','ordinario','2018-12-02',1,12,1),
-('Lucia','158.653.566-82','99834-49751','VIP','2018-01-14',1,14,2),
-('Lucia','158.653.566-82','99834-49751','VIP','2018-01-20',1,14,1),
-('Lucia','158.653.566-82','99834-49751','VIP','2018-01-23',1,14,2),
-('Lucia','158.653.566-82','99834-49751','VIP','2018-01-05',1,14,1),
-('Lucia','158.653.566-82','99834-49751','VIP','2018-01-29',1,14,2),
-('Jean','601.344.699-76','99868-8793','ordinario','2018-12-02',1,15,1),
-('Marcia','181.747.547-92','99682-6543','VIP','2018-11-06',1,16,2),
-('Romeo','729.306.542-60','99888-6557','VIP','2018-05-23',1,12,2);
+('Bianca','827.158.515-02','99568-48948','ordinario','2018-12-02',1,1,1),
+('Lucia','158.653.566-82','99834-49751','VIP','2018-01-14',1,4,2),
+('Jean','601.344.699-76','99868-8793','ordinario','2018-12-02',1,5,1),
+('Marcia','181.747.547-92','99682-6543','VIP','2018-11-06',1,6,2),
+('Romeo','729.306.542-60','99888-6557','VIP','2018-05-23',1,7,2);
 
 
 /*
@@ -148,9 +149,7 @@ values
 ('Macaron','Doce',15,10,3,1),
 ('Escargots','exóticos',2,50,4,2);
 
-select * from pratos;
 
-select * from clientes;
 /*
 Populando  as bebidas_industrial
 */
@@ -253,20 +252,20 @@ values
 
 INSERT INTO reservas( Res_Mes_ID, Res_Data, Res_Cli_ID )
 value
-(3,CURRENT_DATE(),7),
-(10,CURRENT_DATE(),7),
-(7,CURRENT_DATE(),8),
-(5,CURRENT_DATE(),10);
+(3,CURRENT_DATE(),4),
+(10,CURRENT_DATE(),4),
+(7,CURRENT_DATE(),2),
+(5,CURRENT_DATE(),1);
 
 /*
 Populando a Tabela pedido. é preciso Notificar que Ped_Status tem como opção "En ANDAMENTO" ou "FECHADO" 
 */
 INSERT INTO pedidos (Ped_Cli_ID, Ped_Mes_ID, Ped_Status, Ped_Data_hora)
 values 
-(7,3,'EN ANDAMENTO',NOW()),
-(7,10,'FECHADO','2018-09-15'),
-(8,7,'EN ANDAMENTO',NOW()),
-(10,5,'EN ANDAMENTO',NOW());
+(4,3,'EN ANDAMENTO',NOW()),
+(4,10,'FECHADO','2018-09-15'),
+(2,7,'EN ANDAMENTO',NOW()),
+(1,5,'EN ANDAMENTO',NOW());
 
 
 INSERT INTO pagamento ( Pag_Ped_ID, Pag_modalidade,	Pag_Status)
@@ -278,9 +277,37 @@ values
 
 INSERT INTO pedidos_itens( PeI_Ped_ID, PeI_Ped_Cli_ID, PeI_Ped_Mes_ID, PeI_Pra_ID, PeI_Bed_ID)
 values
-(1,7,3,18,3),
-(2,7,10,13,6),
-(3,8,7,15,7),
-(4,10,5,11,1);
+(1,4,3,8,3),
+(2,4,10,3,6),
+(3,2,7,5,7),
+(4,1,5,1,1);
 
+
+
+
+
+/*
+ AS CONSULTAS DE VERIFICAÇÂO DAS TABELAS
+*/
+select * from caixa ;
+select * from proprietario;
+select * from gerente;
+select * from garcom ;
+select * from garcom_datas_trabalhos;
+select * from cozinheiro;
+select * from cozinheiro_datas_trabalhos;
+select * from agente_limpeza;
+select * from agente_limpeza_datas_trabalhos;
+select * from clientes;
+select * from supermercados;
+select * from agente_manu;
+select * from pratos;
+select * from bebida_industri;
+select * from bebida_nat_sol;
+select * from estoque;
+select * from utilizar_estoque;
+select * from lista_mesas;
+select * from reservas;
+select * from pedidos;
+select * from pagamento;
 select * from pedidos_itens;

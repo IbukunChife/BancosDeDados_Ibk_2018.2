@@ -12,7 +12,7 @@ garcom ( Gar_ID, Gar_Nome, Gar_CPF, Gar_End, Gar_Tel, Gar_Salario, Gar_Data_Entr
     Gar_Pro_ID)
 pedidos ( Ped_ID, Ped_Cli_ID, Ped_Mes_ID, Ped_Status, Ped_Data_hora, Ped_ValT )
 pedidos_itens( PeI_ID, PeI_Ped_ID, PeI_Ped_Cli_ID, PeI_Ped_Mes_ID, PeI_Pra_ID, PeI_Bed_ID)
-
+pratos (Pra_ID, Pra_Nome, Pra_Cat, Pra_Qtd_Disp, Pra_Preço_Uni, Pra_Coz_ID, Pra_Ger_ID )
 */
 
 -- Query1: O ingrediente mais utilizado para os pratos ?
@@ -67,3 +67,13 @@ SELECT NaS_Nome , COUNT(*) as Qtd FROM
 (SELECT Ped_Status,PeI_Bed_ID FROM pedidos 
 JOIN pedidos_itens ON Ped_ID = PeI_Ped_ID AND Ped_Status='FECHADO') as vendido
 JOIN bebida_nat_sol ON NaS_ID = PeI_Bed_ID GROUP BY NaS_Nome ORDER BY Qtd DESC LIMIT 1;
+
+-- Query11: QUAL È O CARDAPIO DO DIA ?
+SELECT Pra_Nome AS Pratos, Pra_Preço_Uni as Preco FROM pratos
+WHERE  Pra_Qtd_Disp != 0;
+
+SELECT Ind_Nome AS Bebidas, Ind_Preço_Uni AS Preco FROM bebida_industri
+WHERE  Ind_Qtd_Disp != 0;
+
+SELECT NaS_Nome AS Bebidas, NaS_Preço_Uni Preco FROM bebida_nat_sol
+WHERE  NaS_Qtd_Disp != 0;
