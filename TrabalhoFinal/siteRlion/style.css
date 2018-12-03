@@ -1,0 +1,44 @@
+
+body{
+	background-image: url("imagem/fundo.jpg");
+	background-repeat: no-repeat;
+            -moz-background-size: 100% 110%;
+            -webkit-background-size: 100% 110%;
+            background-size: 130% 150%;}
+
+            *{
+	color: red;
+}
+                    
+}
+
+
+h1{
+	font-size: 100px
+
+}
+div.panel{
+	text-align: left;
+	float: center;
+	color: transparent;
+	width: 75%;
+	min-width: 40px;
+	padding: 3px 3px;
+	box-shadow: 5px 5px;
+	padding-left: 13.8em;
+}
+div.navbar a{
+	float: left;
+	display: block;
+	text-align: left;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+div.navbar a.right{
+	float: right;
+	display: block;
+	text-align: left;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
